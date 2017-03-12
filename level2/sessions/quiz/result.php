@@ -6,14 +6,15 @@
  * Time: 23:58
  */
 $result = 0;
-if (isset($_SESSION['test'])) {
+if (isset($_SESSION['answers'])) {
     $answers = parse_ini_file('answers.ini');
-    foreach ($_SESSION['test'] as $value) {
-        if (array_key_exists($value, $answers)) {
-            $result += (int)$answers[$value];
+    foreach ($_SESSION['answers'] as $key => $value) {
+        if ($value == $answers[$key]) {
+            $result ++;
         }
     }
     session_destroy();
 }
 ?>
-<p>Your result is <?php echo  $result ?></p>
+<p>Your result is <?php echo  $result ?> from <?php echo count($questions) ?></p>
+<p><a href="index.php">Start the test again</a></p>
