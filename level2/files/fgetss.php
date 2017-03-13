@@ -8,7 +8,7 @@
 if ($myFile = fopen('data.html', 'r')) {
     $lines = [];
     
-    while ($line = fgetss($myFile, 1024, '<br><p></p>')) {
+    while ($line = fgetss($myFile, 1024, '<p></p>')) {
         $lines[] = $line;
     }
     fclose($myFile);
