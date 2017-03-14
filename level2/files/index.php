@@ -32,7 +32,7 @@
         <li><a href="index.php?id=file">file</a></li>
         <li><a href="index.php?id=file_get_contents">file_get_contents</a></li>
     </ul>
-    <div style="float: left">
+    <div style="float: left;width: 100%">
     <?php
     $id = isset($_GET['id']) ? strip_tags(trim($_GET['id'])) : '';
     if (!empty($id)) {

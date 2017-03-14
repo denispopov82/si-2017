@@ -1,3 +1,0 @@
-[2017-03-09 11:22:59] [DEBUG] John is visited site
-[2017-03-09 11:23:04] [DEBUG] Denis is visited site
-[2017-03-09 11:23:04] [DEBUG] Denis is visited site

@@ -11,6 +11,7 @@ if ($myFile = fopen('data.txt', 'r')) {
     while ($line = fgets($myFile)) {
         $lines[] = $line;
     }
+    
     fclose($myFile);
     echo "<pre>";
         var_dump($lines);

@@ -1,6 +1,6 @@
 <?php
 $lines = [];
-$newString = '\nSix line';
+$newString = "\r\nSix line";
 if ($myFile = fopen('data.txt', 'a+')) {
     fputs($myFile, $newString);
 }
