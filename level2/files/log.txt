@@ -1,2 +1,0 @@
-[2017-03-15 13:43:02] [DEBUG] Denis has visited the site
-[2017-03-15 13:43:03] [DEBUG] Denis has leaved the site

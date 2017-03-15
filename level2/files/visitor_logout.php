@@ -11,4 +11,4 @@ if (isset($_SESSION['name'])) {
 
 session_destroy();
 
-header('Location: http://test.loc:8080/files/visitor.php');
+header('Location: http://test.loc:8080/team/my/level2/files/visitor.php');

@@ -14,6 +14,8 @@ if (!empty($_POST)) {
     $_SESSION['name'] = $name;
     
     setDebug($name . ' has visited the site');
+    
+    header('Location: http://test.loc:8080/team/my/level2/files/visitor.php');
 } else {
     $name = !empty($_SESSION['name']) ? $_SESSION['name'] : '';
 }

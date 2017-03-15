@@ -31,6 +31,7 @@
         <li><a href="index.php?id=readfile">readfile</a></li>
         <li><a href="index.php?id=file">file</a></li>
         <li><a href="index.php?id=file_get_contents">file_get_contents</a></li>
+        <li><a href="index.php?id=file_put_contents">file_put_contents</a></li>
         <li><a href="index.php?id=visitor">visitor</a></li>
     </ul>
     <div style="float: left">
