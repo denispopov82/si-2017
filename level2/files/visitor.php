@@ -12,14 +12,10 @@ require_once 'logger.php';
 if (!empty($_POST)) {
     $name = strip_tags(trim($_POST['name']));
     $_SESSION['name'] = $name;
+    
+    setDebug($name . ' has visited the site');
 } else {
     $name = !empty($_SESSION['name']) ? $_SESSION['name'] : '';
-}
-
-if (empty($name)) {
-    setNotice('Guest is visited site');
-} else {
-    setDebug($name . ' is visited site');
 }
 
 ?>
@@ -32,12 +28,16 @@ if (empty($name)) {
 <body>
 <?php if (!empty($name)): ?>
     <p><strong>Hello, <?php echo $name ?></strong></p>
-<?php endif; ?>
+    <p>
+        <a href="visitor_logout.php">Logout</a>
+    </p>
+<?php else: ?>
 <div>
     <form action="visitor.php" method="post">
         Your name: <input name="name" type="text" value=""/><br/>
         <input type="submit" name="submit" value="Submit">
     </form>
 </div>
+<?php endif; ?>
 </body>
 </html>

@@ -9,3 +9,4 @@ fclose($myFile);
 echo "<pre>";
     var_dump($lines);
 echo "</pre>";
+echo '<p>File has been closed successfully!</p>';

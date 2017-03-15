@@ -8,10 +8,11 @@
 if ($myFile = fopen('data.html', 'r')) {
     $lines = [];
     
-    while ($line = fgetss($myFile, 1024, '<p></p>')) {
+    while ($line = fgetss($myFile, 1024, '<strong></strong>')) {
         $lines[] = $line;
     }
     fclose($myFile);
+    
     echo "<pre>";
         var_dump($lines);
     echo "</pre>";
