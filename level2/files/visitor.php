@@ -1,25 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Denis
- * Date: 03.03.2017
- * Time: 23:09
- */
 session_start();
 
-require_once 'logger.php';
+include 'logger.php';
 
+// create html form
+// set name to session
 if (!empty($_POST)) {
-    $name = strip_tags(trim($_POST['name']));
-    $_SESSION['name'] = $name;
+    $username = isset($_POST['username']) ? strip_tags(trim($_POST['username'])) : '';
+    $_SESSION['username'] = $username;
     
-    setDebug($name . ' has visited the site');
-    
-    header('Location: http://test.loc:8080/team/my/level2/files/visitor.php');
-} else {
-    $name = !empty($_SESSION['name']) ? $_SESSION['name'] : '';
-}
+    logger(DEBUG, $username . ' has visited the site');
 
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+} else {
+    $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+}
+// log username to log
+// display username from session
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,18 +25,17 @@ if (!empty($_POST)) {
     <title>Title</title>
 </head>
 <body>
-<?php if (!empty($name)): ?>
-    <p><strong>Hello, <?php echo $name ?></strong></p>
+<?php if (!empty($username)): ?>
+    <p><?php echo $username ?></p>
     <p>
         <a href="visitor_logout.php">Logout</a>
     </p>
 <?php else: ?>
-<div>
-    <form action="visitor.php" method="post">
-        Your name: <input name="name" type="text" value=""/><br/>
-        <input type="submit" name="submit" value="Submit">
-    </form>
-</div>
+<form action="visitor.php" method="post">
+    Username: <input type="text" name="username" value="" /><br >
+    <input type="submit" value="Send">
+</form>
 <?php endif; ?>
 </body>
 </html>
+

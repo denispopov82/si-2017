@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-require_once 'logger.php';
+include 'logger.php';
 
-if (isset($_SESSION['name'])) {
-    setDebug($_SESSION['name'] . ' has leaved the site');
+if (isset($_SESSION['username'])) {
+    logger(DEBUG, $_SESSION['username'] . ' has leaved the site');
     
-    unset($_SESSION['name']);
+    unset($_SESSION['username']);
 }
 
 session_destroy();
 
-header('Location: http://test.loc:8080/team/my/level2/files/visitor.php');
+header('Location: http://' . $_SERVER['HTTP_HOST'] . '/team/my/level2/files/visitor.php');
