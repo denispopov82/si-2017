@@ -1,10 +1,15 @@
 <?php
-$dir = opendir('./../files');
-while ($name = readdir($dir)) {
-    if (is_dir($name)) {
-        echo '<strong>' . $name . '</strong>><br>';
-    } else {
-        echo $name . '<br>';
+$dir = '.';
+$resource = opendir($dir);
+while ($file = readdir($resource)) {
+    if ($file == '.' || $file == '..') {
+        continue;
+    }
+    if (is_dir($file)) {
+        echo '<strong>' . $file . '</strong><br />';
+    } elseif (is_file($file)) {
+        echo $file . '<br />';
     }
 }
-closedir($dir);
+
+//scandir('.');

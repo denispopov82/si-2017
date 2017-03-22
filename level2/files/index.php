@@ -31,8 +31,10 @@
         <li><a href="index.php?id=readfile">readfile</a></li>
         <li><a href="index.php?id=file">file</a></li>
         <li><a href="index.php?id=file_get_contents">file_get_contents</a></li>
+        <li><a href="index.php?id=file_put_contents">file_put_contents</a></li>
+        <li><a href="index.php?id=visitor">visitor</a></li>
     </ul>
-    <div style="float: left;width: 100%">
+    <div style="float: left">
     <?php
     $id = isset($_GET['id']) ? strip_tags(trim($_GET['id'])) : '';
     if (!empty($id)) {

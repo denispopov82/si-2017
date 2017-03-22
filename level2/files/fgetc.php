@@ -1,17 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Denis
- * Date: 08.03.2017
- * Time: 19:02
- */
+$lines = [];
 if ($myFile = fopen('data.txt', 'r')) {
-    $chars = [];
-    while ($character = fgetc($myFile)) {
-        $chars[] = $character;
+    while (($myLine = fgetc($myFile)) == true) {
+        $lines[] = $myLine;
     }
-    fclose($myFile);
-    echo "<pre>";
-        var_dump($chars);
-    echo "</pre>";
 }
+fclose($myFile);
+
+echo "<pre>";
+    var_dump($lines);
+echo "</pre>";

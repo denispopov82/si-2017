@@ -6,6 +6,7 @@ if ($myFile = fopen('data.txt', 'r')) {
     }
 }
 fclose($myFile);
+
 echo "<pre>";
     var_dump($lines);
 echo "</pre>";

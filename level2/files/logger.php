@@ -1,67 +1,79 @@
 <?php
+// define constants
+define("DEBUG", 'DEBUG');
+define("ERROR", 'ERROR');
 
-function openFile($file, $fileMode)
+// define functions
+function fileOpen($filename, $mode)
 {
-    $myFile = fopen($file, $fileMode) or die('File can\'t be opened');
+    $resource = fopen($filename, $mode) or die('File can not be opened!');
     
-    return $myFile;
+    return $resource;
 }
 
-function closeFile($resource)
+function fileClose($resource)
 {
-    if (is_resource($resource)) {
-        fclose($resource);
+    if (!is_resource($resource)) {
+        die('File can not be closed!');
     }
+    
+    fclose($resource);
 }
 
 function formatMessage($level, $message)
 {
-    $message = '[' . date('Y-m-d H:i:s') . '] [' . $level . '] ' . $message;
+    $message = '[' . date('Y-m-d H:i:s') . '] ' . '[' . $level . '] ' . $message . PHP_EOL;
     
-    return $message . PHP_EOL;
+    return $message;
 }
 
-function write($resource, $message)
+function writeLog($resource, $message)
 {
-    $result = fwrite($resource, $message);
-    if ($result === false) {
-        echo('The file could not be written to.');
+    if (!is_resource($resource)) {
+        die('Log can not be written');
     }
-}
-
-function setError($message)
-{
-    logger('ERROR', $message);
-}
-
-function setWarning($message)
-{
-    logger('WARNING', $message);
-}
-
-function setNotice($message)
-{
-    logger('NOTICE', $message);
-}
-
-function setDebug($message)
-{
-    logger('DEBUG', $message);
+    
+    fwrite($resource, $message);
 }
 
 function logger($level, $message)
 {
-    $file = 'log.txt';
-    $fileMode = 'a+';
+    $fileLog = 'log.txt';
+    $mode = 'a';
     
-    $resource = openFile($file, $fileMode);
+    $resource = fileOpen($fileLog, $mode);
     $message = formatMessage($level, $message);
-    write($resource, $message);
-    
-    closeFile($resource);
+    writeLog($resource, $message);
+    fileClose($resource);
 }
 
-//setError(ERROR, 'Test error');
-//setWarning(WARNING, 'Test warning');
-//setNotice(NOTICE, 'Test notice');
-//setDebug(DEBUG, 'Test defbug');
+echo '---- Start log ----<br />';
+
+logger(DEBUG, 'Test debug message');
+logger(ERROR, 'Test error message');
+
+echo '---- End log ----';
+
+// call logger
+
+// ob_implicit_flush(1);
+// ob_flush(); sleep(1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

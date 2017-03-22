@@ -1,13 +1,13 @@
 <?php
+$lines = [];
 if ($myFile = fopen('data.txt', 'r')) {
-    $lines = [];
-    while ($line = fgets($myFile)) {
-        $lines[] = $line;
+    while ($myLine = fgets($myFile)) {
+        $lines[] = $myLine;
     }
-    fclose($myFile);
 }
+fclose($myFile);
 
-// or
+// OR
 
 $content = file('data.txt');
 echo "<pre>";

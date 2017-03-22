@@ -1,8 +1,12 @@
 <?php
-$myFile = fopen('data.txt', 'r') or die('Can\'t open file');
-echo fread($myFile, 5);
+$myFile = fopen('data.txt', 'r') or die('File can\'t be opened');
+
+echo fread($myFile, filesize('data.txt'));
+
 fclose($myFile);
 
-// or
+echo '<br>';
+echo '<br>';
 
+// OR
 readfile('data.txt');
