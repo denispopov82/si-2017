@@ -1,0 +1,33 @@
+a*b
+a+b
+caaaaab
+
+--------------
+PHP.5
+PHP.?5
+PHP 5 PHP5 PHP_5 PHP-5
+
+--------------
+fo{2,}ba{2}r
+foobar foooooobar, fooobaar, foobaaar
+
+--------------
+[0-9]{1,3}
+PHP is 2005
+
+--------------
+^([a-z]{1,})@([a-z]{1,})\.([a-z]{1,})$
+john@gmail.com
+
+--------------
+([A-Za-z ]+)(?:ith)
+John Smith
+
+--------------
+PHP\\\5
+PHP\5
+
+
+ABC
+DEF
+GHI
