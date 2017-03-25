@@ -4,7 +4,7 @@ $url = 'http://test.loc:8080/team/my/level2/curl/test.html';
 // ----- First example
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
-//curl_exec($ch);
+curl_exec($ch);
 curl_close($ch);
 
 // ----- Use response
@@ -13,14 +13,14 @@ curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 curl_close($ch);
-//echo $content;
+echo $content;
 
 // ----- Display header and response
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_HEADER, true);
 curl_setopt($ch, CURLOPT_NOBODY, true);
-//curl_exec($ch);
+curl_exec($ch);
 curl_close($ch);
 
 // ----- Save content to file
