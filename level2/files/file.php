@@ -5,12 +5,11 @@ if ($myFile = fopen('data.txt', 'r')) {
         $lines[] = $myLine;
     }
 }
+fclose($myFile);
 
-$myFile = fopen('data.txt', 'r');
-fpassthru($myFile);
-    
-//fclose($myFile);
-//echo "<pre>";
-//    var_dump($lines);
-//echo "</pre>";
+// OR
 
+$content = file('data.txt');
+echo "<pre>";
+    var_dump($content);
+echo "</pre>";

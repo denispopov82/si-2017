@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Denis
- * Date: 08.03.2017
- * Time: 19:02
- */
-$myFile = fopen('data.txt', 'r') or die('Can\'t open file');
-echo 'File has been opened successfully';
-echo '<br>';
+$myFile = fopen('data.txt', 'r') or die('File can\'t be opened');
+echo '<p>File is opened successfully!</p>';
 
 fclose($myFile);
-echo 'File has been closed successfully';
+echo '<p>File has been closed successfully!</p>';
