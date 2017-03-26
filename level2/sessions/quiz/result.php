@@ -13,7 +13,6 @@ if (isset($_SESSION['answers'])) {
             $result ++;
         }
     }
-    session_destroy();
 }
 ?>
 <p>Your result is <?php echo  $result ?> from <?php echo count($questions) ?></p>
