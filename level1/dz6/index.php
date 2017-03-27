@@ -1,3 +1,4 @@
+<?php include_once "handler.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <title>DZ-6</title>
 </head>
 <body>
-    <form method="post" action="handler.php">
+    <form method="post" action="index.php">
         <table width="70%" border="1" align="center">
             <tr>
                 <td>
@@ -24,14 +25,14 @@
             <tr>
                 <td>
                     <label>dd.mm.YY:
-                        <input type="radio" name="format" value="dd.mm.YY" checked="checked">
+                        <input type="radio" name="format" value="d.m.Y" checked="checked">
                     </label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <label>YY.mm.dd:
-                        <input type="radio" name="format" value="YY.mm.dd">
+                        <input type="radio" name="format" value="Y.m.d">
                     </label>
                 </td>
             </tr>
