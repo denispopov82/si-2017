@@ -14,7 +14,8 @@ if (!$link) {
 $firstname = 'DEU';
 $lastname = 'Bavarian';
 
-$stmt = mysqli_prepare($link, "INSERT INTO user (`firstname`, `lastname`) VALUES (?, ?)");
+$query = 'INSERT INTO user (`firstname`, `lastname`) VALUES (?, ?)';
+$stmt = mysqli_prepare($link, $query);
 mysqli_stmt_bind_param($stmt, 'ss', $firstname, $lastname);
 /* execute prepared statement */
 mysqli_stmt_execute($stmt);
