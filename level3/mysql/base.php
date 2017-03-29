@@ -11,9 +11,10 @@ if (!$link) {
     printf("Can't connect to the database. The error code: %s\n", mysqli_connect_error());
     exit;
 }
+mysqli_query($link, 'SET NAMES utf8');
 
-//$firstname = "William";
-//$lastname = "O'Genry";
+$firstname = "William";
+$lastname = "O'Genry";
 //
 //// ----------- 1
 //// insert new row
@@ -24,13 +25,13 @@ if (!$link) {
 //echo '<br>';
 //
 //// ---------- 2
-//$firstname = mysqli_real_escape_string($link, $firstname);
-//$lastname = mysqli_real_escape_string($link, $lastname);
-//$query = "INSERT INTO user (`firstname`, `lastname`) VALUES ('$firstname', '$lastname')";
-//if (!$result = mysqli_query($link, $query)) {
-//    printf("Error %s", mysqli_error($link));
-//}
-//echo '<br>';
+$firstname = mysqli_real_escape_string($link, $firstname);
+$lastname = mysqli_real_escape_string($link, $lastname);
+$query = "INSERT INTO user (`firstname`, `lastname`) VALUES ('$firstname', '$lastname')";
+if (!$result = mysqli_query($link, $query)) {
+    printf("Error %s", mysqli_error($link));
+}
+echo '<br>';
 
 
 /* Посылаем запрос серверу */
