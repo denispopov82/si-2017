@@ -12,13 +12,13 @@ $query = 'CREATE TABLE IF NOT EXISTS workers (
 ) DEFAULT CHARSET=utf8;';
 mysqli_query($link, $query) or die('Table is not created' . mysqli_error($link));
 
-$query = 'INSERT INTO workers (`name`, `age`, `salary`) VALUES
-    (\'Дима\', 23, 400),
-    (\'Петя\', 25, 500),
-    (\'Вася\', 23, 500),
-    (\'Коля\', 30, 1000),
-    (\'Иван\', 27, 500),
-    (\'Кирилл\', 28, 1000);';
+$query = "INSERT INTO workers (`name`, `age`, `salary`) VALUES
+    ('Дима', 23, 400),
+    ('Петя', 25, 500),
+    ('Вася', 23, 500),
+    ('Коля', 30, 1000),
+    ('Иван', 27, 500),
+    ('Кирилл', 28, 1000);";
 //mysqli_query($link, $query) or die('Rows are not inserted: ' . mysqli_error($link));
 
 /**
