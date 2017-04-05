@@ -1,4 +1,4 @@
-<?php include_once "handler.php"; ?>
+<?php include_once "handler.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +11,14 @@
             <tr>
                 <td>
                     <label>Date 1:
-                        <input type="text" name="date1" value="" placeholder="YYYY-mm-dd">
+                        <input type="text" name="date1" value="" placeholder="Y-m-d">
                     </label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <label>Date 2:
-                        <input type="text" name="date2" value="" placeholder="YYYY-mm-dd">
+                        <input type="text" name="date2" value="" placeholder="Y-m-d">
                     </label>
                 </td>
             </tr>
@@ -38,7 +38,83 @@
             </tr>
             <tr>
                 <td>
+                    <fieldset>
+                        <legend>Subjects you may know</legend>
+                        <label>Html
+                            <input type="checkbox" name="subjects[html]" /><br />
+                        </label>
+                        <label>CSS
+                            <input type="checkbox" name="subjects[css]" /><br />
+                        </label>
+                        <label>PHP
+                            <input type="checkbox" name="subjects[php]" /><br />
+                        </label>
+                        <label>Javascript
+                            <input type="checkbox" name="subjects[javascript]" />
+                        </label>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>Do you know PHP?</legend>
+                        <label>Yes
+                            <input type="radio" name="phpknown" /><br />
+                        </label>
+                        <label>No
+                            <input type="radio" name="phpknown" />
+                        </label>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>How old are you?</legend>
+                        <label>20
+                            <input type="radio" name="age" value="20" />
+                        </label>
+                        <label>21-25
+                            <input type="radio" name="age" value="25" />
+                        </label>
+                        <label>26-30
+                            <input type="radio" name="age" value="30" />
+                        </label>
+                        <label>More the 30
+                            <input type="radio" name="age" value="31" />
+                        </label>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>How old are you?
+                        <select name="age2">
+                            <option value="20">20</option>
+                            <option value="25">21-25</option>
+                            <option value="30">26-30</option>
+                            <option value="31">more then 30</option>
+                        </select>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Subjects you may know:<br />
+                        <select multiple name="subjects2">
+                            <option value="html">html</option>
+                            <option value="css">css</option>
+                            <option value="php">php</option>
+                            <option value="javascript">javascript</option>
+                        </select>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <input type="submit" value="Send">
+                    
                 </td>
             </tr>
         </table>
