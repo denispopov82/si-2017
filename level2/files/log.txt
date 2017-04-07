@@ -1,4 +1,0 @@
-[2017-03-15 21:44:14] [DEBUG] Test debug message
-[2017-03-15 21:44:14] [ERROR] Test error message
-[2017-03-16 09:19:58] [DEBUG] Test debug message
-[2017-03-16 09:19:58] [ERROR] Test error message
