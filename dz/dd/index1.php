@@ -15,10 +15,10 @@ function get_string($string)
     return $word;
 }
 
-echo get_string('helloworld');
-echo '<br>';
-echo get_string('hel');
-echo '<br>';
+//echo get_string('helloworld');
+//echo '<br>';
+//echo get_string('hel');
+//echo '<br>';
 
 /**
  * 2. Дана строка. Показать третий, шестой, девятый и так далее символы.
@@ -29,7 +29,7 @@ $length = strlen($string);
 for ($i = 0; $i < $length; $i += 3) {
     $word .= $string[$i];
 }
-echo $word;
+//echo $word;
 
 /**
  * 3. Дана строка. Разделить строку на фрагменты по три подряд идущих символа.
@@ -56,35 +56,43 @@ for ($i = 0; $i < $length; $i++) {
 
 
 $count = count($words);
+$count2 = count($symbols);
 for ($i = 0; $i < $count; $i++) {
-    for ($j = 0; $j < count($symbols); $j++) {
+    shuffle($symbols);
+    for ($j = 0; $j < $count2; $j++) {
         if ($words[$i][0] != $symbols[$j] && $words[$i][2] != $symbols[$j]) {
             $words[$i][1] = $symbols[$j];
         }
     }
 }
+sort($words, SORT_STRING);
 
-//$symbols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-//$symbolsCount = count($symbols);
-//$string = 'hellothisisaverysimplestringthatispreparedfortheexercise';
-//$length = strlen($string);
-//$parts = [];
-//$part = '';
-//for ($i = 0, $index = 1; $i < $length; $i++, $index++) {
-//    $part .= $string[$i];
-//    if ($index == 3) {
-//        do {
-//            $randomKey = array_rand($symbols, 1);
-//            $randomSymbol = $symbols[$randomKey];
-//            $isEqual = ($randomSymbol == $part[0] || $randomSymbol == $part[1] || $randomSymbol == $part[2]);
-//            if (!$isEqual) {
-//                $part[1] = $randomSymbol;
-//            }
-//        } while ($isEqual);
-//
-//        $parts[] = $part;
-//        $index = 0;
-//        $part = '';
-//    }
-//}
-//sort($parts);
+/**
+ * Написать генерацию строк длиной 10 символов: первые 4 символа - цифры,
+ * следующие два символы - различные буквы, следующие 4 символа - нули или единицы.
+ */
+$string = '';
+$i = 0;
+while ($i < 4) {
+    $string .= mt_rand(0, 9);
+    $i++;
+}
+
+$symbols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+$keys = array_rand($symbols, 2);
+$string .= $symbols[$keys[0]] . $symbols[$keys[1]];
+
+$i = 0;
+while ($i < 4) {
+    $string .= mt_rand(0, 1);
+    $i++;
+}
+
+echo $string;
+
+
+
+
+
+
+

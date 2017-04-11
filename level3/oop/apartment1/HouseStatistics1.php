@@ -1,9 +1,9 @@
 <?php
 
-class HouseStatistics
+class HouseStatistics1
 {
     /**
-     * @var House
+     * @var House1
      */
     private $house;
     
@@ -15,7 +15,7 @@ class HouseStatistics
     private $apartmentsSquare = [];
     
     /**
-     * @param House $house
+     * @param House1 $house
      */
     public function setHouse($house)
     {
@@ -47,10 +47,10 @@ class HouseStatistics
     {
         $storeys = $this->house->getStoreys();
         foreach ($storeys as $storey) {
-            /** @var Storey $storey */
+            /** @var Storey1 $storey */
             $apartments = $storey->getApartments();
             foreach ($apartments as $apartment) {
-                /** @var Apartment $apartment */
+                /** @var Apartment1 $apartment */
                 $roomsAmount = $apartment->getRoomsAmount();
                 if (!isset($this->apartmentsAmount[$roomsAmount])) {
                     $this->apartmentsAmount[$roomsAmount] = 0;
@@ -62,7 +62,7 @@ class HouseStatistics
     
     public function getOneRoomApartmentsAmout()
     {
-        return $this->apartmentsAmount[OneRoomApartment::ROOMS_AMOUNT];
+        return $this->apartmentsAmount[OneRoomApartment1::ROOMS_AMOUNT];
         
 //        $oneRoomsAmount = 0;
 //        $storeys = $this->house->getStoreys();
@@ -81,7 +81,7 @@ class HouseStatistics
     
     public function getTwoRoomApartmentsAmout()
     {
-        return $this->apartmentsAmount[TwoRoomApartment::ROOMS_AMOUNT];
+        return $this->apartmentsAmount[TwoRoomApartment1::ROOMS_AMOUNT];
         
 //        $storeys = $this->house->getStoreys();
 //        $apartmentsAmount = array_map(
@@ -107,7 +107,7 @@ class HouseStatistics
     
     public function getThreeRoomApartmentsAmout()
     {
-        return $this->apartmentsAmount[ThreeRoomApartment::ROOMS_AMOUNT];
+        return $this->apartmentsAmount[ThreeRoomApartment1::ROOMS_AMOUNT];
         
 //        $storeys = $this->house->getStoreys();
 //        $apartmentsAmount = array_map(
@@ -135,10 +135,10 @@ class HouseStatistics
     {
         $storeys = $this->house->getStoreys();
         foreach ($storeys as $storey) {
-            /** @var Storey $storey */
+            /** @var Storey1 $storey */
             $apartments = $storey->getApartments();
             foreach ($apartments as $apartment) {
-                /** @var Apartment $apartment */
+                /** @var Apartment1 $apartment */
                 $roomsAmount = $apartment->getRoomsAmount();
                 $apartmentSquare = $apartment->getSquare();
                 if (!isset($this->apartmentsSquare[$roomsAmount])) {

@@ -1,6 +1,6 @@
 <?php
 
-interface IBalcony
+interface IBalcony1
 {
     public static function getBalconiesAmount();
 }

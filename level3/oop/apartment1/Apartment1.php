@@ -1,6 +1,6 @@
 <?php
 
-abstract class Apartment implements IBalcony, ILoggia
+abstract class Apartment1 implements IBalcony1, ILoggia1
 {
     const ROOMS_AMOUNT = 0;
     

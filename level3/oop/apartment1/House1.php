@@ -6,7 +6,7 @@ require_once 'TwoRoomApartment.php';
 require_once 'ThreeRoomApartment.php';
 require_once 'Storey.php';
 
-class House
+class House1
 {
     /**
      * @var int
@@ -37,21 +37,21 @@ class House
     {
         for ($storeyNumber = 1; $storeyNumber <= $this->storeysNumber; $storeyNumber++) {
             $apartments = [
-                new OneRoomApartment(),
-                new OneRoomApartment(),
-                new OneRoomApartment(),
-                new TwoRoomApartment(),
-                new TwoRoomApartment(),
-                new ThreeRoomApartment(),
-                new ThreeRoomApartment()
+                new OneRoomApartment1(),
+                new OneRoomApartment1(),
+                new OneRoomApartment1(),
+                new TwoRoomApartment1(),
+                new TwoRoomApartment1(),
+                new ThreeRoomApartment1(),
+                new ThreeRoomApartment1()
             ];
-            $storey = new Storey($apartments);
+            $storey = new Storey1($apartments);
             $this->setStoreys($storeyNumber, $storey);
         }
     }
 }
 
-$house = new House(9);
+$house = new House1(9);
 $house->build();
 //echo "<pre>";
 //    var_dump($house);

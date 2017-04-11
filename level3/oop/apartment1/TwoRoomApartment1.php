@@ -1,7 +1,7 @@
 <?php
 require_once 'Apartment.php';
 
-class TwoRoomApartment extends Apartment
+class TwoRoomApartment1 extends Apartment1
 {
     const ROOMS_AMOUNT = 2;
     

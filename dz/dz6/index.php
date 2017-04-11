@@ -60,10 +60,10 @@
                 <fieldset>
                     <legend>Do you know PHP?</legend>
                     <label>Yes
-                        <input type="radio" name="phpknown"/><br/>
+                        <input type="radio" name="phpknown" checked value="1" /><br/>
                     </label>
                     <label>No
-                        <input type="radio" name="phpknown"/>
+                        <input type="radio" name="phpknown" value="0" />
                     </label>
                 </fieldset>
             </td>
@@ -89,8 +89,9 @@
         </tr>
         <tr>
             <td>
-                <label>How old are you?
+                <label>Your age
                     <select name="age2">
+                        <option value="">How old are you?</option>
                         <option value="20">20</option>
                         <option value="25">21-25</option>
                         <option value="30">26-30</option>
@@ -102,12 +103,32 @@
         <tr>
             <td>
                 <label>Subjects you may know:<br/>
-                    <select multiple name="subjects2">
+                    <select multiple name="subjects2[]">
                         <option value="html">html</option>
                         <option value="css">css</option>
                         <option value="php">php</option>
                         <option value="javascript">javascript</option>
                     </select>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Our custom element:
+                    <?php echo getElement('text', 'custom', '', 'This is a custom element') ?>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Our custom select:
+                    <?php
+                    $options = array(
+                        array('value' => 'php', 'text' => 'Язык PHP'),
+                        array('value' => 'html', 'text' => 'Язык HTML'),
+                    );
+                    echo getSelect($options);
+                    ?>
                 </label>
             </td>
         </tr>

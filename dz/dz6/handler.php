@@ -19,6 +19,10 @@ if (!empty($_POST)) {
     $date2 = !empty($_POST['date2']) ? clean($_POST['date2']) : '';
     $format = !empty($_POST['format']) ? clean($_POST['format']) : '';
     $subjects = !empty($_POST['subjects']) ? $_POST['subjects'] : [];
+    $phpknown = !empty($_POST['phpknown']) ? (int) $_POST['phpknown'] : 0;
+    $age = !empty($_POST['age']) ? (int) $_POST['age'] : 0;
+    $age2 = !empty($_POST['age2']) ? (int) $_POST['age2'] : 0;
+    $subjects2 = !empty($_POST['subjects2']) ? $_POST['subjects2'] : [];
     
     $date1Ts = strtotime($date1);
     $date2Ts = strtotime($date2);
@@ -120,7 +124,52 @@ if (!empty($_POST)) {
             );
             
             echo 'You may know: ' . implode(', ', $subjects);
+            echo '<br>';
         }
+        
+        /**
+         * 10. Создайте html-форму. Спросите у пользователя знает ли он PHP с помощью двух radio-кнопок.
+         * Выведите результат на экран. Сделайте так, чтобы по умолчанию один из вариантов был уже отмечен.
+         */
+        echo ($phpknown) ? 'You know PHP' : 'You don\'t know PHP';
+        echo '<br>';
+        
+        /**
+         * 11. Создайте html-форму. Спросите у пользователя его возраст с помощью нескольких radio-кнопок,
+         * сгруппированных элементом fieldset. Варианты ответа сделайте такими: менее 20 лет, 20-25, 26-30,
+         * более 30. Результат выдайте на экран в видет “Ваш возраст в диапазоне <n> лет”.
+         */
+        if ($age) {
+            echo 'Your age is ' . $age . '<br />';
+        }
+        
+        /**
+         * 12. Создайте html-форму. Спросите у пользователя его возраст с помощью select.
+         * Варианты ответа сделайте такими: менее 20 лет, 20-25, 26-30, более 30.
+         */
+        if ($age2) {
+            echo 'Your age is ' . $age2 . '<br />';
+        }
+        
+        /**
+         * 13. Создайте html-форму. Спросите у пользователя с помощью элемента multiselect,
+         * какие из языков он знает: html, css, php, javascript. Выведите на экран те языки,
+         * которые знает пользователь.
+         */
+        if (!empty($subjects2)) {
+            $subjects2 = array_map(
+                function ($subject) {
+                    return '<strong>' . $subject . '</strong>';
+                },
+                array_values($subjects2)
+            );
+    
+            echo 'Subjects you may know: ' . implode(', ', $subjects2);
+            echo '<br>';
+        }
+        
+        
+        
     }
 }
 
@@ -186,4 +235,42 @@ if (!empty($_GET)) {
         }
         echo '6. Enter Date in Chineese calendar is ' . $animal;
     }
+}
+
+/**
+ * 14. Сделайте функцию, которая создаёт html элемент. Функция должна иметь
+ * следующие параметры: type, name, value, placeholder.
+ * В функцию на вход может попасть только input или textarea. В любом другом случае необходимо
+ * вывести предупреждение об ошибке.
+ */
+function getElement($type, $name, $value, $placeholder)
+{
+    if ($type == 'text') {
+        return '<input type="text" name="' . $name . '" value="' . $value . '" placeholder="' . $placeholder . '">';
+    } elseif ($type == 'textarea') {
+        return '<textarea name="' . $name . '">' . $value . '</textarea>';
+    } else {
+        echo 'Type is not correct.';
+    }
+    
+    return '';
+}
+
+/**
+ * 15. Сделайте функцию, которая будет создавать селект. Функция должна принимать многомерный массив,
+ * например:
+ * $arr = array(
+ *      0 => array('value'=>'php', 'text'=>'Язык PHP'),
+ *      1 => array('value'=>'html', 'text'=>'Язык HTML'),
+ * )
+ */
+function getSelect($options)
+{
+    $select = '<select name="custom_select">';
+    foreach ($options as $value) {
+        $select .= '<option value="' . $value['value'] . '">' . $value['text'] . '</option>';
+    }
+    $select .= '</select>';
+    
+    return $select;
 }

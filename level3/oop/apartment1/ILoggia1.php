@@ -1,6 +1,6 @@
 <?php
 
-interface ILoggia
+interface ILoggia1
 {
     public static function getLoggiasAmount();
 }

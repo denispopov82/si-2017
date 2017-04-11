@@ -2,9 +2,9 @@
 require_once 'House.php';
 require_once 'HouseStatistics.php';
 
-$house = new House(9);
+$house = new House1(9);
 $house->build();
-$houseStatistics = new HouseStatistics();
+$houseStatistics = new HouseStatistics1();
 $houseStatistics->setHouse($house);
 $houseStatistics->collectRoomsApartmentAmount();
 $houseStatistics->collectApartmentSquare();
@@ -36,22 +36,22 @@ $houseStatistics->collectApartmentSquare();
         <tr>
             <td>Однокомнатных: </td>
             <td>
-                <?php echo $houseStatistics->getRoomApartmentsSquare(OneRoomApartment::ROOMS_AMOUNT) ?>
-                (<?php echo $houseStatistics->getRoomApartmentsSquare(OneRoomApartment::ROOMS_AMOUNT, true) ?>)
+                <?php echo $houseStatistics->getRoomApartmentsSquare(OneRoomApartment1::ROOMS_AMOUNT) ?>
+                (<?php echo $houseStatistics->getRoomApartmentsSquare(OneRoomApartment1::ROOMS_AMOUNT, true) ?>)
             </td>
         </tr>
         <tr>
             <td>Двухкомнатных: </td>
             <td>
-                <?php echo $houseStatistics->getRoomApartmentsSquare(TwoRoomApartment::ROOMS_AMOUNT) ?>
-                (<?php echo $houseStatistics->getRoomApartmentsSquare(TwoRoomApartment::ROOMS_AMOUNT, true) ?>)
+                <?php echo $houseStatistics->getRoomApartmentsSquare(TwoRoomApartment1::ROOMS_AMOUNT) ?>
+                (<?php echo $houseStatistics->getRoomApartmentsSquare(TwoRoomApartment1::ROOMS_AMOUNT, true) ?>)
             </td>
         </tr>
         <tr>
             <td>Трехкомнатных: </td>
             <td>
-                <?php echo $houseStatistics->getRoomApartmentsSquare(ThreeRoomApartment::ROOMS_AMOUNT) ?>
-                (<?php echo $houseStatistics->getRoomApartmentsSquare(ThreeRoomApartment::ROOMS_AMOUNT, true) ?>)
+                <?php echo $houseStatistics->getRoomApartmentsSquare(ThreeRoomApartment1::ROOMS_AMOUNT) ?>
+                (<?php echo $houseStatistics->getRoomApartmentsSquare(ThreeRoomApartment1::ROOMS_AMOUNT, true) ?>)
             </td>
         </tr>
         
@@ -79,22 +79,22 @@ $houseStatistics->collectApartmentSquare();
         <tr>
             <td>В однокомнатных: </td>
             <td>
-                Балконов: <?php echo (OneRoomApartment::hasBalcony() ? OneRoomApartment::getBalconiesAmount() : '-') ?><br />
-                Лоджий: <?php echo (OneRoomApartment::hasLoggia() ? OneRoomApartment::getLoggiasAmount() : '-') ?><br />
+                Балконов: <?php echo (OneRoomApartment1::hasBalcony() ? OneRoomApartment1::getBalconiesAmount() : '-') ?><br />
+                Лоджий: <?php echo (OneRoomApartment1::hasLoggia() ? OneRoomApartment1::getLoggiasAmount() : '-') ?><br />
             </td>
         </tr>
         <tr>
             <td>В двухкомнатных: </td>
             <td>
-                Балконов: <?php echo (TwoRoomApartment::hasBalcony() ? TwoRoomApartment::getBalconiesAmount() : '-') ?><br />
-                Лоджий: <?php echo (TwoRoomApartment::hasLoggia() ? TwoRoomApartment::getLoggiasAmount() : '-') ?><br />
+                Балконов: <?php echo (TwoRoomApartment1::hasBalcony() ? TwoRoomApartment1::getBalconiesAmount() : '-') ?><br />
+                Лоджий: <?php echo (TwoRoomApartment1::hasLoggia() ? TwoRoomApartment1::getLoggiasAmount() : '-') ?><br />
             </td>
         </tr>
         <tr>
             <td>В трехкомнатных: </td>
             <td>
-                Балконов: <?php echo (ThreeRoomApartment::hasBalcony() ? ThreeRoomApartment::getBalconiesAmount() : '-') ?><br />
-                Лоджий: <?php echo (ThreeRoomApartment::hasLoggia() ? ThreeRoomApartment::getLoggiasAmount() : '-') ?><br />
+                Балконов: <?php echo (ThreeRoomApartment1::hasBalcony() ? ThreeRoomApartment1::getBalconiesAmount() : '-') ?><br />
+                Лоджий: <?php echo (ThreeRoomApartment1::hasLoggia() ? ThreeRoomApartment1::getLoggiasAmount() : '-') ?><br />
             </td>
         </tr>
     </table>
