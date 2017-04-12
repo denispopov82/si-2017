@@ -38,3 +38,6 @@ echo StaticExample::$aNum;
 echo '<br>';
 StaticExample2::sayHello();
 echo '<br>';
+$classname = 'StaticExample2';
+$classname::sayHello();
+echo '<br>';
