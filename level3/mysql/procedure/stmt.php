@@ -1,28 +1,16 @@
 <?php
-function execute($stmt, $types, $params)
-{
-    $aParams = [];
-    for ($i = 0; $i < count($params); $i++) {
-        $aParams[] = &$params[$i];
-    }
-    array_unshift($aParams, $types);
-    array_unshift($aParams, $stmt);
-    
-    call_user_func_array('mysqli_stmt_bind_param', $aParams);
-    
-    return mysqli_stmt_execute($stmt);
-}
-
 /* Подключение к серверу MySQL */
 $link = mysqli_connect(
     'localhost', /* Хост, к которому мы подключаемся */
     'root', /* Имя пользователя */
-    'root', /* Используемый пароль */
-    'personal'
+    'root' /* Используемый пароль */
 );
 if (!$link) {
     printf("Can't connect to the database. The error code: %s\n", mysqli_connect_error());
     exit;
+}
+if (!mysqli_select_db($link, 'personal')) {
+    die(mysqli_error($link));
 }
 mysqli_query($link, 'SET NAMES utf8');
 

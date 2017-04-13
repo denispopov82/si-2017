@@ -9,8 +9,9 @@ $link = mysqli_connect($host, $username, $password);
 if (!$link) {
     die('Connection is lost ' . mysqli_connect_error());
 }
-mysqli_select_db($link, $dbname);
-
+if (!mysqli_select_db($link, $dbname)) {
+    die(mysqli_error($link));
+}
 mysqli_query($link, 'SET NAMES utf8');
 
 $firstname = 'William';
@@ -25,7 +26,6 @@ if (!$result) {
 }
 
 $query = "SELECT * FROM user";
-//$query = "SELECT * FROM user WHERE firstname = 'John'";
 $result = mysqli_query($link, $query);
 if (!$result) {
     die('Users are not exist ' . mysqli_error($link));

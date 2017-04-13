@@ -1,6 +1,11 @@
 <?php
 /* Подключение к серверу MySQL */
-$link = new mysqli($host, $username, $password);
+$link = new mysqli(
+    $host,
+    $username,
+    $password
+);
+
 if (!empty($link->connect_error)) {
     die($link->connect_error);
 }
