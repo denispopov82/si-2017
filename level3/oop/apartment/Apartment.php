@@ -25,11 +25,26 @@ abstract class Apartment implements IBalcony, ILoggia
     
     public function hasLoggia()
     {
-        return static::$loggias > 0;
     }
     
     public function getLoggias()
     {
-        return static::$loggias;
     }
+    
+    abstract public function getSquare();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,4 +12,9 @@ class ThreeRoomApartment extends Apartment implements ICloset
     {
         // TODO: Implement hasCloset() method.
     }
+    
+    public function getSquare()
+    {
+        // TODO: Implement getSquare() method.
+    }
 }

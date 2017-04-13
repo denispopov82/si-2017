@@ -10,6 +10,8 @@ class HouseStatistics
     
     private $apartments = [];
     
+    private $balconies = [];
+    
     public function setHouse(House $house)
     {
         $this->house = $house;
@@ -94,4 +96,110 @@ class HouseStatistics
         
         return $roomsCount;
     }
+    
+    private function collectBalconies()
+    {
+        if (empty($this->apartments)) {
+            $this->collectApartments();
+        }
+        
+        foreach ($this->apartments as $roomsNumber => $apartments) {
+            $apartmentsCount = count($apartments);
+            /**
+             * @var $apartment Apartment
+             */
+            $apartment = array_shift($apartments);
+            $balconiesAmount = $apartment->getBalconies();
+            $this->balconies[$apartment->getRoomsAmount()] = $balconiesAmount * $apartmentsCount;
+        }
+    }
+    
+    public function getBalconiesAmount()
+    {
+        if (empty($this->balconies)) {
+            $this->collectBalconies();
+        }
+        
+        $balconiesAmount = array_sum($this->balconies);
+        
+        return $balconiesAmount;
+    }
+    
+    public function getOneRoomBalconiesAmountTotal()
+    {
+        if (empty($this->balconies)) {
+            $this->collectBalconies();
+        }
+    
+        return $this->balconies[OneRoomApartment::ROOMS_AMOUT];
+    }
+    
+    public function getOneRoomBalconiesSingleAmount()
+    {
+        /**
+         * @var $apartment Apartment
+         */
+        $apartment = array_shift($this->apartments[OneRoomApartment::ROOMS_AMOUT]);
+        if ($apartment->hasBalcony()) {
+            return $apartment->getBalconies();
+        }
+        
+        return 0;
+    }
+    
+    public function getTwoRoomBalconiesAmountTotal()
+    {
+        if (empty($this->balconies)) {
+            $this->collectBalconies();
+        }
+        
+        return $this->balconies[TwoRoomApartment::ROOMS_AMOUT];
+    }
+    
+    public function getTwoRoomBalconiesSingleAmount()
+    {
+        /**
+         * @var $apartment Apartment
+         */
+        $apartment = array_shift($this->apartments[TwoRoomApartment::ROOMS_AMOUT]);
+        if ($apartment->hasBalcony()) {
+            return $apartment->getBalconies();
+        }
+        
+        return 0;
+    }
+    
+    public function getTheeRoomBalconiesAmountTotal()
+    {
+        if (empty($this->balconies)) {
+            $this->collectBalconies();
+        }
+        
+        return $this->balconies[ThreeRoomApartment::ROOMS_AMOUT];
+    }
+    
+    public function getThreeRoomBalconiesSingleAmount()
+    {
+        /**
+         * @var $apartment Apartment
+         */
+        $apartment = array_shift($this->apartments[ThreeRoomApartment::ROOMS_AMOUT]);
+        if ($apartment->hasBalcony()) {
+            return $apartment->getBalconies();
+        }
+        
+        return 0;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+

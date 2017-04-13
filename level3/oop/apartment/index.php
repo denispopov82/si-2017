@@ -7,7 +7,6 @@ $house->build();
 
 $statistics = new HouseStatistics();
 $statistics->setHouse($house);
-
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +40,60 @@ $statistics->setHouse($house);
         <td>Трехкомнатных:</td>
         <td><?php echo $statistics->getThreeRoomApartmentsAmount() ?></td>
     </tr>
+    <tr>
+        <td>Балконы и лоджии:</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Количество балконов: </td>
+        <td>
+            <?php echo $statistics->getBalconiesAmount() ?>
+        </td>
+    </tr>
+    <tr>
+        <td>Количество лоджий: </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>В однокомнатных:</td>
+        <td>
+            Балконы:
+            <?php echo $statistics->getOneRoomBalconiesSingleAmount(); ?><br />
+            Лоджии: <br />
+        </td>
+    </tr>
+    <tr>
+        <td>В двухкомнатных:</td>
+        <td>
+            Балконы:
+            <?php echo $statistics->getTwoRoomBalconiesSingleAmount(); ?><br />
+            Лоджии: <br />
+        </td>
+    </tr>
+    <tr>
+        <td>В трехкомнатных:</td>
+        <td>
+            Балконы:
+            <?php echo $statistics->getThreeRoomBalconiesSingleAmount(); ?><br />
+            Лоджии: <br />
+        </td>
+    </tr>
 </table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
