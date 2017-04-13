@@ -1,5 +1,5 @@
 <?php
-interface ITransformer
+interface ISuperTransformer
 {
     public function toCar();
     public function toPlane();

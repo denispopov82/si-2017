@@ -1,39 +1,35 @@
 <?php
-//class Logger_invalid
-//{
-//    private function saveToFile($message)
-//    {
-//        // ...
-//    }
-//
-//    public function logMessage($message)
-//    {
-//        $this->saveToFile($message);
-//    }
-//}
 
-class FileLogger implements ILogger
+/**
+ * FileLogger
+ * Переделана имплементация логирования с использованием абстрактного класса LoggerAbstract.
+ * Класс хранит абстрактный метод saveLog.
+ * Каждый класс по логированию должен реализовать этот метод по своему.
+ * Теперь мы можем создать два класса для логирования в файл и в базу данных. Каждый класс реализует абстрактный метод
+ * по своему.
+ */
+class FileLogger extends LoggerAbstract
 {
-    private function saveToFile($message)
+    public function saveLog($message)
     {
-        // ...
-    }
-    
-    public function logMessage($message)
-    {
-        $this->saveToFile($message);
+        // save log to file
     }
 }
 
-class DBLogger implements ILogger
+class DBLogger extends LoggerAbstract
 {
-    private function saveToDb($message)
+    public function saveLog($message)
     {
-        // ...
+        // save log to database
     }
-    
+}
+
+abstract class LoggerAbstract
+{
     public function logMessage($message)
     {
-        $this->saveToDb($message);
+        $this->saveLog($message);
     }
+    
+    abstract public function saveLog($message);
 }

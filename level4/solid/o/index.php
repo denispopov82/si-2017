@@ -5,9 +5,9 @@
  * open-closed
  */
 $fileLogger = new FileLogger();
-$product = new Product($fileLogger);
+$product = new Product1($fileLogger);
 $product->setPrice(34);
 
 $dbLogger = new DBLogger();
-$product = new Product($dbLogger);
+$product = new Product1($dbLogger);
 $product->setPrice(34);
