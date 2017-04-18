@@ -1,98 +1,134 @@
 <?php
 /**
- * 1. Дана строка. Вывести первые три символа и последние три символа, если длина строки больше 5.
- * Иначе вывести первый символ столько раз, какова длина строки.
+ * 1.
  */
-function get_string($string)
+abstract class PaidService
 {
-    $length = strlen($string);
-    if ($length > 5) {
-        $word = substr($string, 0, 3) . '...' . substr($string, -3);
-    } else {
-        $word = str_repeat($string[0], $length);
+    /**
+     * @var string
+     */
+    private $id;
+    
+    /**
+     * @var string
+     */
+    private $name;
+    
+    /**
+     * @var float
+     */
+    private $cost;
+    
+    public function __construct($id, $name, $cost)
+    {
+        $this->setId($id);
+        $this->setName($name);
+        $this->setCost($cost);
     }
     
-    return $word;
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+    
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+    
+    /**
+     * @return float
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
+    
+    /**
+     * @param float $cost
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+    }
+    
+    abstract public function calculateAverageMonthlyCosts();
 }
 
-//echo get_string('helloworld');
-//echo '<br>';
-//echo get_string('hel');
-//echo '<br>';
-
-/**
- * 2. Дана строка. Показать третий, шестой, девятый и так далее символы.
- */
-$string = '0123456789';
-$word = '';
-$length = strlen($string);
-for ($i = 0; $i < $length; $i += 3) {
-    $word .= $string[$i];
-}
-//echo $word;
-
-/**
- * 3. Дана строка. Разделить строку на фрагменты по три подряд идущих символа.
- * В каждом фрагменте средний символ заменить на случайный символ, не совпадающий ни с одним из символов
- * этого фрагмента. Показать фрагменты, упорядоченные по алфавиту.
- */
-$symbols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-$string = 'aelbothisisaverysimplestringthatispreparedfortheexercise';
-$word = '';
-$words = [];
-$length = strlen($string);
-$j = 0;
-
-for ($i = 0; $i < $length; $i++) {
-    if ($j < 3) {
-        $word .= $string[$i];
-        $j++;
-    } else {
-        $words[] = $word;
-        $word = $string[$i];
-        $j = 1;
+class FixedMonthlyCostPaidService extends PaidService
+{
+    /**
+     * среднемесячные затраты = costs.
+     */
+    public function calculateAverageMonthlyCosts()
+    {
+        return $this->getCost();
     }
 }
 
-
-$count = count($words);
-$count2 = count($symbols);
-for ($i = 0; $i < $count; $i++) {
-    shuffle($symbols);
-    for ($j = 0; $j < $count2; $j++) {
-        if ($words[$i][0] != $symbols[$j] && $words[$i][2] != $symbols[$j]) {
-            $words[$i][1] = $symbols[$j];
-        }
+class FixedHourlyCostPaidService extends PaidService
+{
+    /**
+     * среднемесячные затраты = 30 * 24 * costs.
+     */
+    public function calculateAverageMonthlyCosts()
+    {
+        return 30 * 24 * $this->getCost();
     }
 }
-sort($words, SORT_STRING);
+
+$services = [
+    new FixedHourlyCostPaidService('service1', 'Google Orkut', 11),
+    new FixedHourlyCostPaidService('service2', 'Google Voice', 9.4),
+    new FixedMonthlyCostPaidService('service5', 'YouTube', 8064),
+    new FixedHourlyCostPaidService('service8', 'YouTube', 11.2),
+    new FixedHourlyCostPaidService('service3', 'Mandrill', 11.2),
+    new FixedHourlyCostPaidService('service4', 'Google Finance', 7.8),
+    new FixedMonthlyCostPaidService('service7', 'Google Building Maker', 5347),
+    new FixedMonthlyCostPaidService('service6', 'LinkedIn', 6863)
+];
+
+function compareServices(PaidService $service1, PaidService $service2)
+{
+    if ($service1->calculateAverageMonthlyCosts() == $service2->calculateAverageMonthlyCosts()) {
+        return ($service1->getName() < $service2->getName()) ? -1 : 1;
+    }
+    
+    return ($service1->calculateAverageMonthlyCosts() > $service2->calculateAverageMonthlyCosts()) ? -1 : 1;
+}
+
+usort($services, "compareServices");
 
 /**
- * Написать генерацию строк длиной 10 символов: первые 4 символа - цифры,
- * следующие два символы - различные буквы, следующие 4 символа - нули или единицы.
+ * @var $service PaidService
  */
-$string = '';
-$i = 0;
-while ($i < 4) {
-    $string .= mt_rand(0, 9);
-    $i++;
+foreach ($services as $key => $service) {
+    printf(
+        '%s / %s / %d <br />',
+        $service->getId(),
+        $service->getName(),
+        $service->calculateAverageMonthlyCosts()
+    );
 }
-
-$symbols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-$keys = array_rand($symbols, 2);
-$string .= $symbols[$keys[0]] . $symbols[$keys[1]];
-
-$i = 0;
-while ($i < 4) {
-    $string .= mt_rand(0, 1);
-    $i++;
-}
-
-echo $string;
-
-
-
-
-
-
-

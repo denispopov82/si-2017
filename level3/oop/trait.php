@@ -1,6 +1,8 @@
 <?php
 abstract class B
 {
+    protected $name;
+    
     public function sayHello()
     {
         echo 'Hello abstract ';
@@ -19,6 +21,8 @@ trait C
 class A extends B
 {
     use C;
+    
+    public $name;
     
     public function sayHello()
     {
