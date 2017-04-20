@@ -5,5 +5,5 @@
  * single responsibility
  */
 $logger = new Logger();
-$product = new Product($logger);
+$product = new ProductS($logger);
 $product->setPrice(34);

@@ -8,6 +8,16 @@
  * Теперь мы можем создать два класса для логирования в файл и в базу данных. Каждый класс реализует абстрактный метод
  * по своему.
  */
+abstract class LoggerAbstract
+{
+    public function logMessage($message)
+    {
+        $this->saveLog($message);
+    }
+    
+    abstract public function saveLog($message);
+}
+
 class FileLogger extends LoggerAbstract
 {
     public function saveLog($message)
@@ -22,14 +32,4 @@ class DBLogger extends LoggerAbstract
     {
         // save log to database
     }
-}
-
-abstract class LoggerAbstract
-{
-    public function logMessage($message)
-    {
-        $this->saveLog($message);
-    }
-    
-    abstract public function saveLog($message);
 }

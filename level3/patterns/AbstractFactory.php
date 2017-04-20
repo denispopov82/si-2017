@@ -8,46 +8,38 @@ class JsonParser extends AbstractParser
 {
     public function parseMessage($message)
     {
-        return json_decode($message, true);
+        // TODO: Implement parse() method.
     }
 }
+
 class XmlParser extends AbstractParser
 {
     public function parseMessage($message)
     {
-        $xml = simplexml_load_string($message);
-        $json = json_encode($xml);
-        $array = json_decode($json, true);
-        
-        return $array;
+        // TODO: Implement parse() method.
     }
 }
 
-/**
- * ${CLASS_NAME}
- *
- * @package   ${PARAM_DOC}
- */
-class ParserFactory
+class FactoryParser
 {
-    public function create($type)
+    public function getParser($type)
     {
-        $resource = null;
+        $instance = null;
         switch ($type) {
             case 'json':
-                $resource = new JsonParser();
+                $instance = new JsonParser();
                 break;
             case 'xml':
-                $resource = new XmlParser();
+                $instance = new XmlParser();
                 break;
             default:
                 break;
         }
         
-        return $resource;
+        return $instance;
     }
 }
 
-$parser = new ParserFactory();
-$jsonParser = $parser->create('json');
-$message = $jsonParser->parseMessage(json_encode(['name' => 'Denis', 'age' => 30]));
+$parser = new FactoryParser();
+$jsonParser = $parser->getParser('json');
+$jsonParser->parseMessage([1, 2, 3]);

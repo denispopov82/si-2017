@@ -1,22 +1,21 @@
 <?php
 
-class ProductS
+class ProductIncorrect
 {
     private $price;
-    private $_logger;
-
-    public function __construct(Logger $logger)
-    {
-        $this->_logger = $logger;
-    }
-
+    
     public function setPrice($price)
     {
         try {
             $this->price = $price;
             // save price in db
         } catch (Exception $e) {
-            $this->_logger->logMessage($e->getMessage());
+            $this->logError($e->getMessage());
         }
+    }
+
+    public function logError($error)
+    {
+        // save error message
     }
 }

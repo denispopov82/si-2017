@@ -6,7 +6,7 @@
  */
 class Wife
 {
-    public function getFood ()
+    public function getFood()
     {
         return 'food';
     }
